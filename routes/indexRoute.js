@@ -4,7 +4,7 @@ router.get("/", (req, res) => {
   res.status(200).json({
     version: "1.0",
     message:
-      "Welcome to my RESTful API project. You can send a GET request to the endpoint /person/ to see the object pattern and use all the functionalities of this API. Try it yourself and have fun!",
+      "Welcome to my RESTful API project. You can send a GET request to the endpoint /person/ to see the DB schema pattern. Read the docs and have fun using this API!",
     endpoints: [
       {
         path: "/person",
@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
         methods: "GET",
       },
     ],
+    documentation: "https://github.com/GiovanniBot/api-rest-cloud/blob/main/README.md"
   });
 });
 

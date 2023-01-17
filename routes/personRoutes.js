@@ -5,7 +5,7 @@ const Person = require("../models/Person");
 router.post("/", async (req, res) => {
   const { name, salary, approved } = req.body;
 
-  if (!name || !salary || approved === undefined || typeof approved !== "boolean") {
+  if (name.length <= 0 || salary.length <= 0 || approved === undefined || typeof approved !== "boolean") {
     res.status(422).json({ message: "Name, salary, and approved fields are required" });
     return;
   }
@@ -90,7 +90,7 @@ router.delete("/:id", async (req, res) => {
       return;
     }
 
-    res.status(204);
+    res.status(204).json({});
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't delete the record. Internal Server Error" });
