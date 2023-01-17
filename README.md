@@ -15,7 +15,7 @@ This is a RESTful API project built using the Express.js framework and MongoDB. 
 
 To run this project, you will need Node.js and MongoDB installed on your machine.
 
-1. Clone the repository: `git clone https://github.com/yourusername/your-project-repo.git`
+1. Clone the repository: `git clone https://github.com/GiovanniBot/api-rest-cloud`
 2. Install dependencies: `npm install`
 3. Start the server: `npm run dev`
 
