@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   const person = {
     name,
     salary,
-    approved,
+    approved
   };
 
   try {
@@ -60,7 +60,7 @@ router.patch("/:id", async (req, res) => {
   const person = {
     name,
     salary,
-    approved,
+    approved
   };
 
   try {
@@ -79,7 +79,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
@@ -90,7 +90,7 @@ router.delete("/:id", async (req, res, next) => {
       return;
     }
 
-    res.status(200).json({ message: "Resource deleted successfully" });
+    res.status(204);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't delete the record. Internal Server Error" });
