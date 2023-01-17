@@ -1,11 +1,12 @@
 {
   "name": "api-rest",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a RESTful API built using the Express.js framework and MongoDB. It allows clients to perform CRUD operations on a collection of \"persons\" and provides a set of endpoints for managing the collection. Additionally, it also provides an endpoint to retrieve information about the API. The project is using MongoDB Atlas as a fully-managed cloud service for hosting and scaling the database. The project includes a good error handling, validation, and it's ready to be deployed to a hosting platform such as Heroku or AWS.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./api.js"
+    "start": "node ./api.js",
+    "dev": "nodemon ./api.js"
   },
   "keywords": [],
   "author": "",
