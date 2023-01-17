@@ -10,11 +10,11 @@ app.use(express.json());
 
 const personRoutes = require("./routes/personRoutes");
 const indexRoute = require("./routes/indexRoute");
-const notFindRoute = require("./routes/notFindRoute");
+const notFoundRoute = require("./routes/notFoundRoute");
 
 app.use("/person", personRoutes);
 app.use("/", indexRoute);
-app.use(notFindRoute);
+app.use(notFoundRoute);
 
 connectToDb()
   .then(() => {
