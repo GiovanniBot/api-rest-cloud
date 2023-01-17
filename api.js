@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const { connectToDb } = require("./db");
 require("dotenv").config();
 
 const port = process.env.PORT || 3000;
@@ -20,22 +20,10 @@ app.use("/*", (req, res) => {
   req.status(404).render("404");
 });
 
-// * Future-proof snippet for Mongoose 7.
-mongoose.set("strictQuery", false);
-
-const dbUsername = encodeURIComponent(process.env.DB_USER);
-const dbPassword = encodeURIComponent(process.env.DB_PW);
-if (dbUsername.trim().length === 0 && dbPassword.trim().length === 0) {
-    console.log("Error: Couldn't find dbUsername or dbPassword enviroment variables.");
-    return;
-}
-const dbQueryStr = `mongodb+srv://${dbUsername}:${dbPassword}@api-rest.nvbu4oa.mongodb.net/?retryWrites=true&w=majority`;
-
-mongoose
-  .connect(dbQueryStr)
+connectToDb()
   .then(() => {
     try {
-      app.listen(port, () => console.log(`Atlas MongoDB connected!`));
+      app.listen(port, () => console.log(`Connection with Atlas MongoDB established`));
     } catch (err) {
       console.log(err);
     }
