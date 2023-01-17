@@ -6,8 +6,7 @@ router.post("/", async (req, res) => {
   const { name, salary, approved } = req.body;
 
   if (name.length <= 0 || salary.length <= 0 || approved === undefined || typeof approved !== "boolean") {
-    res.status(422).json({ message: "Name, salary, and approved fields are required" });
-    return;
+    res.status(422).json({ message: "name, salary, and approved fields are required and has to follow the specified data format" });
   }
 
   const person = {
@@ -22,7 +21,6 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't create the record. Internal Server Error" });
-    return;
   }
 });
 
@@ -33,7 +31,6 @@ router.get("/", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't retrieve the records. Internal Server Error" });
-    return;
   }
 });
 
@@ -44,13 +41,11 @@ router.get("/:id", async (req, res) => {
     const doc = await Person.findById(id);
     if (!doc) {
       res.status(404).json({ error: "Error: Couldn't find the record." });
-      return;
     }
     res.status(200).json(doc);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't retrieve the record. Internal Server Error" });
-    return;
   }
 });
 
@@ -68,14 +63,12 @@ router.patch("/:id", async (req, res) => {
 
     if (updatedDoc.matchedCount === 0 || !updatedDoc) {
       res.status(404).json({ error: "Error: Couldn't find the record." });
-      return;
     }
 
     res.status(200).json({ message: "The record has been updated successfully" });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't update the record. Internal Server Error" });
-    return;
   }
 });
 
@@ -87,14 +80,12 @@ router.delete("/:id", async (req, res) => {
 
     if (result.deletedCount === 0) {
       res.status(404).json({ message: "Resource not found" });
-      return;
     }
 
-    res.status(204).json({});
+    res.status(204).end();
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error: Couldn't delete the record. Internal Server Error" });
-    return;
   }
 });
 
