@@ -5,7 +5,7 @@ const Person = require("../models/Person");
 router.post("/", async (req, res) => {
   const { name, salary, approved } = req.body;
 
-  if ( !name || !salary || (typeof approved !== "boolean" && approved.length < 0)) {
+  if (!name || !salary || approved === undefined || typeof approved !== "boolean") {
     res.status(422).json({ message: "Name, salary, and approved fields are required" });
     return;
   }
